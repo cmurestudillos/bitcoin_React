@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import './App.css';
+// Estilos de la aplicacion
+import './assets/css/App.css';
+import './assets/css/index.css';
+// Medicion de rendimiento
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
