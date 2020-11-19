@@ -9,3 +9,6 @@ build
 
 # misc
 .svn
+eur.js
+gbp.js
+usd.js
