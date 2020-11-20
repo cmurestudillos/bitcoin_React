@@ -10,6 +10,10 @@
   flex-grow: 1;
 }
 
+.page{
+  flex-grow: 1;
+}
+
 .logo{
   width: 90px;
   margin-top: 10px;
