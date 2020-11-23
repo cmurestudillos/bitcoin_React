@@ -3,21 +3,36 @@ import PropTypes from 'prop-types';
 // Componentes Material Ui
 import {AppBar, Tabs, Tab, Typography, Box, Card, CardContent} from '@material-ui/core/';
 // Peticiones Http
-//import axios from 'axios';
+import axios from 'axios';
 // EndPoint
-//import url from '../../api/endpoint';
+import dataEur from '../../api/eur.js';
+//import dataUsd from '../../api/usd.js';
+//import dataGbp from '../../api/gbp.js';
+// Imagenes
+import euro from '../../assets/img/euro.png';
+
+//-------------------------------------------------------//
+// Metodo para obtener datos en Euros                    //
+//-------------------------------------------------------//
+function getEurCurerency(){
+
+    // Log de seguimiento
+    console.log('TabPanelComponents.js - Metodo getEurCurerency');
+
+    axios.get(dataEur.endpoint)
+        .then( res => {
+            if(res.data){
+            this.modenaEur = res.data['bpi'].EUR;
+            console.log(this.modenaEur);
+        }
+    });
+}
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
       {value === index && (
         <Box p={3}>
           <Typography>{children}</Typography>
@@ -60,17 +75,9 @@ export default function TabPanelComponent() {
       <TabPanel value={value} index={0}>
         <Card className="root">
         <CardContent>
+            <img src={euro} />
             <Typography className="title" color="textSecondary" gutterBottom>
-            Word of the Day
-            </Typography>
-            <Typography variant="h5" component="h2">
-            Word of the Day
-            </Typography>
-            <Typography className="pos" color="textSecondary">
-            adjective
-            </Typography>
-            <Typography variant="body2" component="p">
-            well meaning and kindly.
+                {getEurCurerency()}
             </Typography>
         </CardContent>
         </Card>
