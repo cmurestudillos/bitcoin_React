@@ -14,7 +14,7 @@ import euro from '../../assets/img/euro.png';
 //-------------------------------------------------------//
 // Metodo para obtener datos en Euros                    //
 //-------------------------------------------------------//
-function getEurCurerency(){
+function getEurCurerency(oldvalue, newvalue){
 
     // Log de seguimiento
     console.log('TabPanelComponents.js - Metodo getEurCurerency');
@@ -22,8 +22,8 @@ function getEurCurerency(){
     axios.get(dataEur.endpoint)
         .then( res => {
             if(res.data){
-            this.modenaEur = res.data['bpi'].EUR;
-            console.log(this.modenaEur);
+              newvalue = res.data['bpi'].EUR;
+              console.log(newvalue);
         }
     });
 }
@@ -57,6 +57,10 @@ function a11yProps(index) {
 
 
 export default function TabPanelComponent() {
+
+  var oldDatosEuro = [];
+  var newDatosEuro = [];
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -75,10 +79,9 @@ export default function TabPanelComponent() {
       <TabPanel value={value} index={0}>
         <Card className="root">
         <CardContent>
-            <img src={euro} />
-            <Typography className="title" color="textSecondary" gutterBottom>
-                {getEurCurerency()}
-            </Typography>
+            <img src={euro} width="150" height="150" alt="Euro" />
+            {getEurCurerency(oldDatosEuro, newDatosEuro)}
+            {console.log(newDatosEuro)}
         </CardContent>
         </Card>
       </TabPanel>
