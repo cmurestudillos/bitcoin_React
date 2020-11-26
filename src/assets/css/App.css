@@ -5,6 +5,16 @@
 .bg-custom {
   background-image: linear-gradient(15deg, #61dbfb 0%, #80c7d0 100%);
 }
+
+.tab-bar{
+  background: transparent !important;
+  color: black !important;
+}
+
+.MuiPaper-elevation4{
+  box-shadow: none !important;
+}
+
 .card{
     width: 400px;
     height: 175px;
@@ -17,7 +27,8 @@
 }
 .badge{
   float: right;
-  padding: 10px;
+  margin-top: 15% !important;
+  margin-right: 5% !important;
 }
 
 .title{
@@ -29,6 +40,7 @@
 }
 .tabpanel{
   flex-grow: 1;
+  
 }
 
 .logo{

@@ -43,11 +43,11 @@ export default function TabPanelComponent() {
 
   return (
     <div className="tabpanel">
-      <AppBar position="static">
+      <AppBar position="static" className="tab-bar">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" centered>
           <Tab label="Euro" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="United States Dollar" {...a11yProps(1)} />
+          <Tab label="British Pound Sterling" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
