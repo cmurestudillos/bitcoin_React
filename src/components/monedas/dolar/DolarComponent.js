@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 // Peticiones Http
 import axios from 'axios';
 // EndPoint
-import dataEur from '../../api/eur.js';
+import dataUsd from '../../../api/usd.js';
 // Componentes Material Ui
 import { Card, CardContent, Avatar, Chip, Grid} from '@material-ui/core/';
 // Imagenes
-import euro from '../../assets/img/euro.png';
+import dolar from '../../../assets/img/dollar.png';
 
-class EuroComponent extends Component{
+class DolarComponent extends Component{
 
     state = {
-        monedaEur: []
+        monedaUsd: []
     }
 
     //----------------------------------------------------------------------//
@@ -19,24 +19,24 @@ class EuroComponent extends Component{
     //----------------------------------------------------------------------//
     componentDidMount (){  
         // Log de seguimiento
-        console.log("EuroComponent.js - Metodo componentWillMount");  
+        console.log("DolarComponent.js - Metodo componentWillMount");  
 
-        // Obtenemos los datos de Euro
-        this.getEurCurerency();
+        // Obtenemos los datos del Dolar
+        this.getUsdCurerency();
     }
 //-------------------------------------------------------//
-// Metodo para obtener datos en Euros                    //
+// Metodo para obtener datos en Dolares                  //
 //-------------------------------------------------------//
-getEurCurerency(){
+getUsdCurerency(){
 
     // Log de seguimiento
-    console.log('EuroComponent.js - Metodo getEurCurerency');
+    console.log('DolarComponent.js - Metodo getEurCurerency');
 
-    axios.get(dataEur.endpoint)
+    axios.get(dataUsd.endpoint)
         .then( res => {
             if(res.data){
                 this.setState({
-                    monedaEur: res.data['bpi'].EUR
+                    monedaUsd: res.data['bpi'].USD
                 })
         }
     });
@@ -46,8 +46,6 @@ getEurCurerency(){
     // Metodo render                                                        //
     //----------------------------------------------------------------------//
     render(){
-        // Log de seguimiento
-        console.log('EuroComponent.js - Metodo render()');
 
         return(
             <div>
@@ -55,11 +53,10 @@ getEurCurerency(){
                     <CardContent>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
-                            <img src={euro} width="150" height="150" className="imagen" alt={this.state.monedaEur.description} title={this.state.monedaEur.description} />
-                            <Chip avatar={<Avatar>€</Avatar>} label={this.state.monedaEur.rate}  className="badge" clickable color="primary" variant="outlined" /> 
+                            <img src={dolar} width="150" height="150" className="imagen" alt={this.state.monedaUsd.description} title={this.state.monedaUsd.description} />
+                            <Chip avatar={<Avatar>$</Avatar>} label={this.state.monedaUsd.rate}  className="badge" clickable color="primary" variant="outlined" /> 
                         </Grid>
                     </Grid>
-
                     </CardContent>
                 </Card>                            
             </div>
@@ -67,4 +64,4 @@ getEurCurerency(){
     }
 }
 
-export default EuroComponent;
+export default DolarComponent;

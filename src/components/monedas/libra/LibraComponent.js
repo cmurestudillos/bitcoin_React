@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 // Peticiones Http
 import axios from 'axios';
 // EndPoint
-import dataUsd from '../../api/usd.js';
+import dataGbp from '../../../api/gbp.js';
 // Componentes Material Ui
 import { Card, CardContent, Avatar, Chip, Grid} from '@material-ui/core/';
 // Imagenes
-import dolar from '../../assets/img/dollar.png';
+import libra from '../../../assets/img/libra.png';
 
-class DolarComponent extends Component{
+class LibraComponent extends Component{
 
     state = {
-        monedaUsd: []
+        monedaGbp: []
     }
 
     //----------------------------------------------------------------------//
@@ -19,24 +19,24 @@ class DolarComponent extends Component{
     //----------------------------------------------------------------------//
     componentDidMount (){  
         // Log de seguimiento
-        console.log("DolarComponent.js - Metodo componentWillMount");  
+        console.log("LibraComponent.js - Metodo componentWillMount");  
 
-        // Obtenemos los datos del Dolar
-        this.getUsdCurerency();
+        // Obtenemos los datos de Libras
+        this.getGbpCurerency();
     }
 //-------------------------------------------------------//
-// Metodo para obtener datos en Dolares                  //
+// Metodo para obtener datos en Libras                   //
 //-------------------------------------------------------//
-getUsdCurerency(){
+getGbpCurerency(){
 
     // Log de seguimiento
-    console.log('DolarComponent.js - Metodo getEurCurerency');
+    console.log('LibraComponent.js - Metodo getGbpCurerency');
 
-    axios.get(dataUsd.endpoint)
+    axios.get(dataGbp.endpoint)
         .then( res => {
             if(res.data){
                 this.setState({
-                    monedaUsd: res.data['bpi'].USD
+                    monedaGbp: res.data['bpi'].GBP
                 })
         }
     });
@@ -46,8 +46,6 @@ getUsdCurerency(){
     // Metodo render                                                        //
     //----------------------------------------------------------------------//
     render(){
-        // Log de seguimiento
-        console.log('DolarComponent.js - Metodo render()');
 
         return(
             <div>
@@ -55,8 +53,8 @@ getUsdCurerency(){
                     <CardContent>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
-                            <img src={dolar} width="150" height="150" className="imagen" alt={this.state.monedaUsd.description} title={this.state.monedaUsd.description} />
-                            <Chip avatar={<Avatar>$</Avatar>} label={this.state.monedaUsd.rate}  className="badge" clickable color="primary" variant="outlined" /> 
+                            <img src={libra} width="150" height="150" className="imagen" alt={this.state.monedaGbp.description} title={this.state.monedaGbp.description} />
+                            <Chip avatar={<Avatar>&pound;</Avatar>} label={this.state.monedaGbp.rate}  className="badge" clickable color="primary" variant="outlined" />
                         </Grid>
                     </Grid>
                     </CardContent>
@@ -66,4 +64,4 @@ getUsdCurerency(){
     }
 }
 
-export default DolarComponent;
+export default LibraComponent;

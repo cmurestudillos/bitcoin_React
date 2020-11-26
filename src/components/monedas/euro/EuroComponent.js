@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 // Peticiones Http
 import axios from 'axios';
 // EndPoint
-import dataGbp from '../../api/gbp.js';
+import dataEur from '../../../api/eur.js';
 // Componentes Material Ui
 import { Card, CardContent, Avatar, Chip, Grid} from '@material-ui/core/';
 // Imagenes
-import libra from '../../assets/img/libra.png';
+import euro from '../../../assets/img/euro.png';
 
-class LibraComponent extends Component{
+class EuroComponent extends Component{
 
     state = {
-        monedaGbp: []
+        monedaEur: []
     }
 
     //----------------------------------------------------------------------//
@@ -19,24 +19,24 @@ class LibraComponent extends Component{
     //----------------------------------------------------------------------//
     componentDidMount (){  
         // Log de seguimiento
-        console.log("LibraComponent.js - Metodo componentWillMount");  
+        console.log("EuroComponent.js - Metodo componentWillMount");  
 
-        // Obtenemos los datos de Libras
-        this.getGbpCurerency();
+        // Obtenemos los datos de Euro
+        this.getEurCurerency();
     }
 //-------------------------------------------------------//
-// Metodo para obtener datos en Libras                   //
+// Metodo para obtener datos en Euros                    //
 //-------------------------------------------------------//
-getGbpCurerency(){
+getEurCurerency(){
 
     // Log de seguimiento
-    console.log('LibraComponent.js - Metodo getGbpCurerency');
+    console.log('EuroComponent.js - Metodo getEurCurerency');
 
-    axios.get(dataGbp.endpoint)
+    axios.get(dataEur.endpoint)
         .then( res => {
             if(res.data){
                 this.setState({
-                    monedaGbp: res.data['bpi'].GBP
+                    monedaEur: res.data['bpi'].EUR
                 })
         }
     });
@@ -46,8 +46,6 @@ getGbpCurerency(){
     // Metodo render                                                        //
     //----------------------------------------------------------------------//
     render(){
-        // Log de seguimiento
-        console.log('LibraComponent.js - Metodo render()');
 
         return(
             <div>
@@ -55,10 +53,8 @@ getGbpCurerency(){
                     <CardContent>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
-                            <img src={libra} width="150" height="150" className="imagen" alt={this.state.monedaGbp.description} title={this.state.monedaGbp.description} />
-                            <div>
-                                <p><Chip avatar={<Avatar>&pound;</Avatar>} label={this.state.monedaGbp.rate}  className="badge" clickable color="primary" variant="outlined" /> </p>
-                            </div>
+                            <img src={euro} width="150" height="150" className="imagen" alt={this.state.monedaEur.description} title={this.state.monedaEur.description} />
+                            <Chip avatar={<Avatar>€</Avatar>} label={this.state.monedaEur.rate}  className="badge" clickable color="primary" variant="outlined" /> 
                         </Grid>
                     </Grid>
                     </CardContent>
@@ -68,4 +64,4 @@ getGbpCurerency(){
     }
 }
 
-export default LibraComponent;
+export default EuroComponent;
