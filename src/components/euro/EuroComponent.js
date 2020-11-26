@@ -5,10 +5,9 @@ import axios from 'axios';
 import dataEur from '../../api/eur.js';
 // Componentes Material Ui
 import { Card, CardContent, Avatar, Chip, Grid} from '@material-ui/core/';
-//import dataUsd from '../../api/usd.js';
-//import dataGbp from '../../api/gbp.js';
 // Imagenes
 import euro from '../../assets/img/euro.png';
+
 class EuroComponent extends Component{
 
     state = {
@@ -28,7 +27,7 @@ class EuroComponent extends Component{
 //-------------------------------------------------------//
 // Metodo para obtener datos en Euros                    //
 //-------------------------------------------------------//
-getEurCurerency(oldvalue, newvalue){
+getEurCurerency(){
 
     // Log de seguimiento
     console.log('EuroComponent.js - Metodo getEurCurerency');
