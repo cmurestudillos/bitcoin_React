@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {AppBar, Tabs, Tab, Typography, Box} from '@material-ui/core/';
 // Componentes
 import EuroComponent from '../euro/EuroComponent';
+import DolarComponent from '../dolar/DolarComponent';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,7 +55,7 @@ export default function TabPanelComponent() {
         <EuroComponent />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <DolarComponent />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
